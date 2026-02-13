@@ -251,13 +251,43 @@
   </head>
   <body class="bg-primary text-gray-100 min-h-screen">
     <!-- Header Section -->
-    <header class="container mx-auto px-4 py-8 text-center">
-      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-3 gradient-text font-mono">
-        🕵️ Emoji Spy
-      </h1>
-      <!-- <p class="text-gray-400 text-base md:text-lg font-light">
-        Send Hidden Messages on WhatsApp
-      </p> -->
+    <header class="container mx-auto px-4 py-12 md:py-16 text-center">
+      <div class="inline-block relative group">
+        <!-- Background Glow Effect -->
+        <div class="absolute -inset-10 bg-accent-green/5 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+        
+        <div class="relative flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6">
+          <!-- The Spy Emoji (Naturally Colored) -->
+          <div class="relative">
+            <span class="text-5xl md:text-8xl select-none filter drop-shadow-[0_0_15px_rgba(57,255,20,0.2)] group-hover:drop-shadow-[0_0_25px_rgba(57,255,20,0.4)] transition-all duration-500 transform group-hover:scale-110">🕵️</span>
+            <!-- Small Pulse Indicator -->
+            <span class="absolute top-0 right-0 w-4 h-4 bg-accent-green rounded-full border-2 border-primary animate-ping"></span>
+          </div>
+
+          <div class="flex flex-col items-center md:items-start text-center md:text-left">
+            <h1 class="text-5xl md:text-7xl font-black font-mono tracking-tighter flex items-center">
+              <span class="gradient-text">Emoji</span>
+              <span class="text-white ml-2 md:ml-4 relative">
+                Spy
+                <!-- Underline Decoration -->
+                <span class="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-accent-green to-transparent rounded-full opacity-40"></span>
+              </span>
+              <!-- Status Badge -->
+              <span class="ml-4 px-2 py-1 text-[10px] md:text-xs bg-accent-green/10 text-accent-green border border-accent-green/20 rounded font-mono uppercase tracking-widest hidden md:inline-block animate-pulse">
+                Encrypted
+              </span>
+            </h1>
+            
+            <div class="flex items-center gap-3 mt-3 w-full opacity-60 group-hover:opacity-100 transition-opacity duration-500">
+              <div class="h-[1px] flex-grow bg-gradient-to-r from-transparent via-accent-green/40 to-transparent md:to-accent-green/40"></div>
+              <p class="text-[9px] md:text-xs font-mono text-accent-green tracking-[0.4em] uppercase whitespace-nowrap">
+                Secure Intelligence Protocol
+              </p>
+              <div class="h-[1px] flex-grow md:flex-grow-0 md:w-12 bg-gradient-to-l from-transparent to-accent-green/40"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </header>
 
     <!-- Main Content -->
