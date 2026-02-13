@@ -24,7 +24,7 @@
     />
     <meta
       name="keywords"
-      content="emoji encryption, whatsapp encrypt, text to emoji, AES-256, private messaging"
+      content="emoji encryption, encryption, message encryption, encrypt message, encrypt emoji, message encrypt, text to emoji,text to emoji converter, converter, convert text to emoji, AES-256, private messaging,emoji spy,"
     />
 
     <!-- Open Graph Tags for Social Sharing -->
@@ -255,9 +255,9 @@
       <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-3 gradient-text font-mono">
         🕵️ Emoji Spy
       </h1>
-      <p class="text-gray-400 text-base md:text-lg font-light">
+      <!-- <p class="text-gray-400 text-base md:text-lg font-light">
         Send Hidden Messages on WhatsApp
-      </p>
+      </p> -->
     </header>
 
     <!-- Main Content -->
@@ -288,7 +288,7 @@
           <div id="encryptContent" class="tab-content fade-in">
             <div class="bg-slate-800/30 border border-slate-700 rounded-2xl p-6 md:p-8 backdrop-blur-sm">
               <h2 class="text-2xl font-bold mb-4 text-accent-green">
-                🔒 Encrypt Your Message
+                🔒 Encrypt Message
               </h2>
               <p class="text-gray-400 mb-6">
                 Transform your secret text into emojis that only your recipient can decode.
@@ -300,13 +300,23 @@
                   <label for="messageInput" class="block text-sm font-semibold text-gray-300 mb-2">
                     Your Secret Message
                   </label>
-                  <textarea
-                    id="messageInput"
-                    rows="4"
-                    placeholder="Type your secret message here..."
-                    class="w-full px-4 py-3 bg-slate-900/50 border border-slate-600 rounded-lg text-gray-100 placeholder-gray-500 focus:outline-none focus:border-accent-green focus:ring-2 focus:ring-accent-green/20 transition-all duration-200 resize-none font-body"
-                    required
-                  ></textarea>
+                  <div class="relative group">
+                    <textarea
+                      id="messageInput"
+                      rows="2"
+                      placeholder="Type your secret message here..."
+                      class="w-full pl-4 pr-10 py-3 bg-slate-900/50 border border-slate-600 rounded-lg text-gray-100 placeholder-gray-500 focus:outline-none focus:border-accent-green focus:ring-2 focus:ring-accent-green/20 transition-all duration-200 resize-none font-body"
+                      required
+                    ></textarea>
+                    <button
+                      type="button"
+                      id="clearMessageInput"
+                      class="absolute right-3 top-3 text-gray-400 hover:text-red-400 transition-colors duration-200 hidden"
+                      title="Clear message"
+                    >
+                      ✖️
+                    </button>
+                  </div>
                   <div class="flex justify-between mt-2">
                     <p id="encryptMessageError" class="text-xs text-red-400 hidden font-semibold">⚠️ Please enter a message to encrypt</p>
                     <p id="charCount" class="text-xs text-gray-500 ml-auto">0 characters</p>
@@ -323,18 +333,28 @@
                       type="password"
                       id="passwordInput"
                       placeholder="Enter a strong password..."
-                      class="w-full px-4 py-3 bg-slate-900/50 border border-slate-600 rounded-lg text-gray-100 placeholder-gray-500 focus:outline-none focus:border-accent-green focus:ring-2 focus:ring-accent-green/20 transition-all duration-200"
+                      class="w-full pl-4 pr-20 py-3 bg-slate-900/50 border border-slate-600 rounded-lg text-gray-100 placeholder-gray-500 focus:outline-none focus:border-accent-green focus:ring-2 focus:ring-accent-green/20 transition-all duration-200"
                       required
                       minlength="4"
                     />
-                    <button
-                      type="button"
-                      id="togglePassword"
-                      class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-accent-green transition-colors duration-200"
-                      aria-label="Toggle password visibility"
-                    >
-                      <span id="eyeIcon">👁️</span>
-                    </button>
+                    <div class="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-3">
+                      <button
+                        type="button"
+                        id="clearPasswordInput"
+                        class="text-gray-400 hover:text-red-400 transition-colors duration-200 hidden"
+                        title="Clear password"
+                      >
+                        ✖️
+                      </button>
+                      <button
+                        type="button"
+                        id="togglePassword"
+                        class="text-gray-400 hover:text-accent-green transition-colors duration-200"
+                        aria-label="Toggle password visibility"
+                      >
+                        <span id="eyeIcon">👁️</span>
+                      </button>
+                    </div>
                   </div>
                   <p id="encryptPasswordError" class="text-xs text-red-400 mt-2 hidden font-semibold">⚠️ Password must be at least 4 characters long</p>
                   <p class="text-xs text-gray-500 mt-2">
@@ -358,6 +378,7 @@
                   <span>Encrypt Message</span>
                 </button>
               </form>
+
 
               <!-- Output Section (Hidden by default) -->
               <div id="encryptOutput" class="mt-8 hidden">
@@ -399,18 +420,7 @@
                     </div>
                   </div>
 
-                  <!-- Instructions -->
-                  <div class="mt-4 p-4 bg-slate-900/50 border border-slate-600 rounded-lg">
-                    <p class="text-sm text-gray-300 mb-2">
-                      <strong class="text-accent-green">📤 How to send:</strong>
-                    </p>
-                    <ol class="text-sm text-gray-400 space-y-1 ml-4 list-decimal">
-                      <li>Copy the encrypted emoji message above</li>
-                      <li>Send it to your recipient via WhatsApp or any messaging app</li>
-                      <li>Share the password separately (voice call, in person, etc.)</li>
-                      <li>Your recipient can decrypt it using the same password</li>
-                    </ol>
-                  </div>
+
 
                   <!-- Reset Button -->
                   <button
@@ -429,7 +439,7 @@
           <div id="decryptContent" class="tab-content hidden">
             <div class="bg-slate-800/30 border border-slate-700 rounded-2xl p-6 md:p-8 backdrop-blur-sm">
               <h2 class="text-2xl font-bold mb-4 text-accent-purple">
-                🔓 Decrypt Your Message
+                🔓 Decrypt Message
               </h2>
               <p class="text-gray-400 mb-6">
                 Paste the emoji message and enter the password to reveal the hidden text.
@@ -441,13 +451,23 @@
                   <label for="emojiInput" class="block text-sm font-semibold text-gray-300 mb-2">
                     Encrypted Emoji Message
                   </label>
-                  <textarea
-                    id="emojiInput"
-                    rows="4"
-                    placeholder="Paste the encrypted emoji message here..."
-                    class="w-full px-4 py-3 bg-slate-900/50 border border-slate-600 rounded-lg text-gray-100 placeholder-gray-500 focus:outline-none focus:border-accent-purple focus:ring-2 focus:ring-accent-purple/20 transition-all duration-200 resize-none font-mono text-sm"
-                    required
-                  ></textarea>
+                  <div class="relative group">
+                    <textarea
+                      id="emojiInput"
+                      rows="2"
+                      placeholder="Paste the encrypted emoji message here..."
+                      class="w-full pl-4 pr-10 py-3 bg-slate-900/50 border border-slate-600 rounded-lg text-gray-100 placeholder-gray-500 focus:outline-none focus:border-accent-purple focus:ring-2 focus:ring-accent-purple/20 transition-all duration-200 resize-none font-mono text-sm"
+                      required
+                    ></textarea>
+                    <button
+                      type="button"
+                      id="clearEmojiInput"
+                      class="absolute right-3 top-3 text-gray-400 hover:text-red-400 transition-colors duration-200 hidden"
+                      title="Clear emoji message"
+                    >
+                      ✖️
+                    </button>
+                  </div>
                   <p id="decryptEmojiError" class="text-xs text-red-400 mt-2 hidden font-semibold">⚠️ Please paste the encrypted emoji message</p>
                   <p class="text-xs text-gray-500 mt-2">
                     📥 Paste the emoji message you received
@@ -464,18 +484,28 @@
                       type="password"
                       id="decryptPasswordInput"
                       placeholder="Enter the password..."
-                      class="w-full px-4 py-3 bg-slate-900/50 border border-slate-600 rounded-lg text-gray-100 placeholder-gray-500 focus:outline-none focus:border-accent-purple focus:ring-2 focus:ring-accent-purple/20 transition-all duration-200 font-mono"
+                      class="w-full pl-4 pr-20 py-3 bg-slate-900/50 border border-slate-600 rounded-lg text-gray-100 placeholder-gray-500 focus:outline-none focus:border-accent-purple focus:ring-2 focus:ring-accent-purple/20 transition-all duration-200 font-mono"
                       required
                       minlength="4"
                     />
-                    <button
-                      type="button"
-                      id="toggleDecryptPassword"
-                      class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-accent-purple transition-colors duration-200"
-                      aria-label="Toggle password visibility"
-                    >
-                      <span id="decryptEyeIcon">👁️</span>
-                    </button>
+                    <div class="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-3">
+                      <button
+                        type="button"
+                        id="clearDecryptPasswordInput"
+                        class="text-gray-400 hover:text-red-400 transition-colors duration-200 hidden"
+                        title="Clear password"
+                      >
+                        ✖️
+                      </button>
+                      <button
+                        type="button"
+                        id="toggleDecryptPassword"
+                        class="text-gray-400 hover:text-accent-purple transition-colors duration-200"
+                        aria-label="Toggle password visibility"
+                      >
+                        <span id="decryptEyeIcon">👁️</span>
+                      </button>
+                    </div>
                   </div>
                   <p id="decryptPasswordError" class="text-xs text-red-400 mt-2 hidden font-semibold">⚠️ Please enter the decryption password</p>
                   <p class="text-xs text-gray-500 mt-2">
@@ -499,6 +529,8 @@
                   <span>Decrypt Message</span>
                 </button>
               </form>
+
+
 
               <!-- Decrypted Output Section (Hidden by default) -->
               <div id="decryptOutput" class="mt-8 hidden">
@@ -542,12 +574,33 @@
         </div>
 
         <!-- Space between tool and extra content -->
-        <div class="mt-16"></div>
+        <div class="mt-8"></div>
 
-        <!-- Step 15: AdSense Placeholder 
-        <div id="adsense-placeholder" class="w-full h-24 bg-slate-800/50 border border-slate-700 rounded-lg flex items-center justify-center mb-12 backdrop-blur-sm">
+        <!-- Global AdSense Placeholder 
+        <div id="adsense-placeholder" class="max-w-3xl mx-auto w-full h-24 bg-slate-800/50 border border-slate-700 rounded-lg flex items-center justify-center mb-12 backdrop-blur-sm">
           <span class="text-gray-500 text-sm font-mono">Advertisement Space</span>
-        </div>-->
+        </div>
+
+        <div class="mt-8"></div>-->
+
+        <!-- Instructions -->
+        <div id="instructionSection" class="max-w-3xl mx-auto mb-12 hidden">
+          <div class="p-6 bg-slate-800/30 border border-slate-700 rounded-2xl backdrop-blur-sm">
+            <h3 class="text-lg font-bold text-accent-green mb-4 flex items-center gap-2">
+              <span>📤</span>
+              <span>How to send:</span>
+            </h3>
+            <ol class="text-gray-300 space-y-3 ml-4 list-decimal leading-relaxed">
+              <li><span class="font-semibold text-gray-100">Copy</span> the encrypted emoji message above</li>
+              <li><span class="font-semibold text-gray-100">Send</span> it to your recipient via WhatsApp or any messaging app</li>
+              <li><span class="font-semibold text-gray-100">Share</span> the password separately (voice call, in person, etc.)</li>
+              <li>Your recipient can <span class="font-semibold text-gray-100">decrypt</span> it using the same password</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="mt-8"></div>
+
 
         <!-- Step 13: FAQ Section -->
         <div class="max-w-2xl mx-auto space-y-4">
@@ -919,6 +972,34 @@
       }
 
       /**
+       * Setup clear button functionality for an input/textarea
+       */
+      function uiSetupClearButton(inputEl, clearBtnEl, onClear) {
+        if (!inputEl || !clearBtnEl) return;
+
+        const toggleClearBtn = () => {
+          if (inputEl.value.length > 0) {
+            clearBtnEl.classList.remove('hidden');
+          } else {
+            clearBtnEl.classList.add('hidden');
+          }
+        };
+
+        inputEl.addEventListener('input', toggleClearBtn);
+        inputEl.addEventListener('focus', toggleClearBtn);
+        
+        clearBtnEl.addEventListener('click', () => {
+          inputEl.value = '';
+          toggleClearBtn();
+          inputEl.focus();
+          if (onClear) onClear();
+        });
+
+        // Initial check
+        toggleClearBtn();
+      }
+
+      /**
        * Share emoji string on WhatsApp
        */
       function shareOnWhatsApp(emojiString) {
@@ -1033,6 +1114,8 @@
       const copyIcon = document.getElementById('copyIcon');
       const copyText = document.getElementById('copyText');
       const resetEncryptBtn = document.getElementById('resetEncryptBtn');
+      const clearMessageInput = document.getElementById('clearMessageInput');
+      const clearPasswordInput = document.getElementById('clearPasswordInput');
       
       // Constants
       const MAX_CHARACTERS = 1000;
@@ -1116,6 +1199,13 @@
             // Reset button state
             encryptBtn.disabled = false;
             encryptBtn.innerHTML = originalBtnContent;
+
+            // Show instruction section
+            const instrSection = document.getElementById('instructionSection');
+            if (instrSection) {
+              instrSection.classList.remove('hidden');
+              instrSection.classList.add('fade-in');
+            }
             
           } catch (error) {
             setGeneralError('encryptGeneralError', 'encryptGeneralErrorText', 'Encryption failed. Please try again.');
@@ -1144,8 +1234,10 @@
         showInlineError('encryptPasswordError', false);
         clearGeneralError('encryptGeneralError');
 
-        // Hide output
+        // Hide output and instructions
         encryptOutput.classList.add('hidden');
+        const instrSection = document.getElementById('instructionSection');
+        if (instrSection) instrSection.classList.add('hidden');
         
         // Reset character count
         updateCharacterCount();
@@ -1206,6 +1298,15 @@
       if (resetEncryptBtn) {
         resetEncryptBtn.addEventListener('click', resetEncryptForm);
       }
+
+      // Initialize Clear Buttons
+      uiSetupClearButton(messageInput, clearMessageInput, () => {
+        updateCharacterCount();
+        showInlineError('encryptMessageError', false);
+      });
+      uiSetupClearButton(passwordInput, clearPasswordInput, () => {
+        showInlineError('encryptPasswordError', false);
+      });
     </script>
 
     <!-- Decrypt View JavaScript -->
@@ -1230,6 +1331,8 @@
       const copyDecryptIcon = document.getElementById('copyDecryptIcon');
       const copyDecryptText = document.getElementById('copyDecryptText');
       const resetDecryptBtn = document.getElementById('resetDecryptBtn');
+      const clearEmojiInput = document.getElementById('clearEmojiInput');
+      const clearDecryptPasswordInput = document.getElementById('clearDecryptPasswordInput');
       
 
 
@@ -1369,6 +1472,14 @@
       if (resetDecryptBtn) {
         resetDecryptBtn.addEventListener('click', resetDecryptForm);
       }
+
+      // Initialize Clear Buttons
+      uiSetupClearButton(emojiInput, clearEmojiInput, () => {
+        showInlineError('decryptEmojiError', false);
+      });
+      uiSetupClearButton(decryptPasswordInput, clearDecryptPasswordInput, () => {
+        showInlineError('decryptPasswordError', false);
+      });
     </script>
 
     <!-- FAQ & Footer Script -->
